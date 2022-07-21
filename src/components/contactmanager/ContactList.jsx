@@ -17,7 +17,6 @@ const ContactList = () => {
   useEffect(async () => {
     try {
       let response = await ContactServices.getAllContacts();
-      console.log(response.data);
     } catch (error) {}
   }, []);
 
