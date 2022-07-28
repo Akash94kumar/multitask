@@ -16,12 +16,19 @@ const ContactList = () => {
   });
   useEffect(async () => {
     try {
+      setState({ ...state, loading: true });
       let response = await ContactServices.getAllContacts();
-    } catch (error) {}
+      setState({ ...state, loading: false, contact: response.data });
+    } catch (error) {
+      setState({ ...state, loading: false, errrorMessage: error.message });
+    }
   }, []);
+
+  let { loading, contact, errrorMessage } = state;
 
   return (
     <>
+      <pre>{JSON.stringify(contact)}</pre>
       <section className="contact-search p-3">
         <div className="container">
           <div className="grid">
