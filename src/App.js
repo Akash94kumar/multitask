@@ -25,8 +25,14 @@ function App() {
           {/* <Route exact path="/" element={<Navigate to="/contactmanager/list"/>} /> */}
           <Route path={"/contactmanager/list"} element={<ContactList />} />
           <Route path={"/contactmanager/add"} element={<AddContact />} />
-          <Route path={"/contactmanager/view/"} element={<ViewContact />} />
-          <Route path={"/contactmanager/edit/"} element={<EditContact />} />
+          <Route
+            path={"/contactmanager/view/:contactId"}
+            element={<ViewContact />}
+          />
+          <Route
+            path={"/contactmanager/edit/:contactId"}
+            element={<EditContact />}
+          />
           <Route path="/Contact" element={<Contact />} />
         </Routes>
       </Router>

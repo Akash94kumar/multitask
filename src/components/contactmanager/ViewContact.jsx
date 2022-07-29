@@ -1,8 +1,22 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { ContactServices } from "./server/ContactService";
+import { Link, useParams } from "react-router-dom";
 const ViewContact = () => {
+  let { contactId } = useParams();
+  const [state, setState] = useState({
+    loading: false,
+    contacts: {},
+    errrorMessage: "",
+  });
+  useEffect(async () => {
+    try {
+      let response = await ContactServices.getContact(contactId);
+      console.log(response.data);
+    } catch (error) {}
+  }, [contactId]);
   return (
     <>
+      <h2>{contactId}</h2>
       <section className="view-contact-intro p-3">
         <div className="container">
           <div className="row">
