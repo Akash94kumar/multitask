@@ -1,8 +1,59 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ContactServices } from "./server/ContactService";
 const AddContact = () => {
+  let navigate = useNavigate();
+  const [state, setState] = useState({
+    loading: false,
+    contact: {
+      name: "",
+      photo: "",
+      mobile: "",
+      email: "",
+      company: "",
+      title: "",
+      groupId: "",
+    },
+    groups: [],
+    errorMessage: "",
+  });
+  let updateInput = (event) => {
+    setState({
+      ...state,
+      contact: {
+        ...state.contact,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+  useEffect(async () => {
+    try {
+      setState({ ...state, loading: true });
+      let response = await ContactServices.getGroups();
+      setState({
+        ...state,
+        loading: false,
+        groups: response.data,
+      });
+    } catch (error) {}
+  }, []);
+  let submitForm = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await ContactServices.createContact(state.contact);
+      if (response) {
+        navigate("../contactmanager/list", { replace: true });
+      }
+    } catch (error) {
+      setState({ ...state, errorMessage: error.messages });
+      navigate("../contactmanager/add", { replace: false });
+    }
+  };
+  let { loading, contact, groups, errorMessage } = state;
   return (
     <>
+      {/* <pre>{JSON.stringify(state.contact)}</pre> */}
+
       <section className="add-contact p-3">
         <div className="container">
           <div className="row">
@@ -19,9 +70,13 @@ const AddContact = () => {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <form>
+              <form onSubmit={submitForm}>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="name"
+                    value={contact.name}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Name"
@@ -29,6 +84,10 @@ const AddContact = () => {
                 </div>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="photo"
+                    value={contact.photo}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Photo URL"
@@ -36,6 +95,10 @@ const AddContact = () => {
                 </div>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="email"
+                    value={contact.email}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Email"
@@ -43,6 +106,10 @@ const AddContact = () => {
                 </div>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="mobile"
+                    value={contact.mobile}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Mobile No"
@@ -50,6 +117,10 @@ const AddContact = () => {
                 </div>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="company"
+                    value={contact.company}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Company"
@@ -57,14 +128,32 @@ const AddContact = () => {
                 </div>
                 <div className="mb-2">
                   <input
+                    required={true}
+                    name="title"
+                    value={contact.title}
+                    onChange={updateInput}
                     type="text"
                     className="form-control"
                     placeholder="Title"
                   />
                 </div>
                 <div className="mb-2">
-                  <select className="form-control">
+                  <select
+                    className="form-control"
+                    required={true}
+                    name="groupId"
+                    value={contact.groupId}
+                    onChange={updateInput}
+                  >
                     <option value=""> Select a group</option>
+                    {groups.length > 0 &&
+                      groups.map((group) => {
+                        return (
+                          <option key={group.id} value={group.id}>
+                            {group.name}
+                          </option>
+                        );
+                      })}
                   </select>
                 </div>
                 <div className="mb-2">

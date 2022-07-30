@@ -3,6 +3,18 @@ import axios from "axios";
 export class ContactServices {
   static serverURL = `http://localhost:9000`;
 
+  static getGroups(contact) {
+    let dataURL = `${this.serverURL}/groups`;
+    return axios.get(dataURL);
+  }
+
+  static getGroup(contact) {
+    let groupId = contact.groupId;
+
+    let dataUrl = `${this.serverURL}/groups/${groupId}`;
+    return axios.get(dataUrl);
+  }
+
   static getAllContacts() {
     let dataURL = `${this.serverURL}/contacts`;
     return axios.get(dataURL);
@@ -10,5 +22,10 @@ export class ContactServices {
   static getContact(contactId) {
     let dataURL = `${this.serverURL}/contacts/${contactId}`;
     return axios.get(dataURL);
+  }
+
+  static createContact(contact) {
+    let dataURL = `${this.serverURL}/contacts`;
+    return axios.post(dataURL, contact);
   }
 }
