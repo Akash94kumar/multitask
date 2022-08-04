@@ -140,7 +140,7 @@ const ContactList = () => {
                                     <BsFillEyeFill />
                                   </Link>
                                   <Link
-                                    to="/contactmanager/edit/:contactId"
+                                    to={`/contactmanager/edit/${contact.id}`}
                                     className="btn btn-primary"
                                     style={{ marginBottom: 4 }}
                                   >
