@@ -3,8 +3,8 @@
     {
       "id": "D6BNdWnHI",
       "name": "Brad Gibson",
-      "company": "YouTube",
-      "email": "brad@gmail.com",
+      "company": "Digita Marketer",
+      "email": "bradGibson@gmail.com",
       "title": "Youtuber",
       "mobile": "9876546787",
       "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g8R5VmgqDqpRCwQfw2Y9V-DM-iXS59R9hQ&usqp=CAU",
@@ -12,7 +12,7 @@
     },
     {
       "id": "TVobxeKbI",
-      "name": "Glenda Kim",
+      "name": "Glenda Kimm",
       "company": "Friend",
       "email": "glenda@gmail.com",
       "title": "freelancer",
@@ -39,36 +39,6 @@
       "title": "Software Engineer",
       "groupId": "1",
       "id": "kLt-bJF"
-    },
-    {
-      "name": "Rajan",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g8R5VmgqDqpRCwQfw2Y9V-DM-iXS59R9hQ&usqp=CAU",
-      "mobile": "7979014458",
-      "email": "admin@gmail.com",
-      "company": "TCS",
-      "title": "Software Enginer",
-      "groupId": "4",
-      "id": "aoe66tA"
-    },
-    {
-      "name": "Gobind",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g8R5VmgqDqpRCwQfw2Y9V-DM-iXS59R9hQ&usqp=CAU",
-      "mobile": "5656",
-      "email": "divyssaa78rani@gmail.com",
-      "company": "khk",
-      "title": "gigg",
-      "groupId": "5",
-      "id": "bsmwnp1"
-    },
-    {
-      "name": "sd",
-      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0g8R5VmgqDqpRCwQfw2Y9V-DM-iXS59R9hQ&usqp=CAU",
-      "mobile": "21",
-      "email": "sadasd@gmail.com",
-      "company": "aadas",
-      "title": "sdasd",
-      "groupId": "3",
-      "id": "3reQp7T"
     }
   ],
   "groups": [

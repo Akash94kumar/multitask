@@ -10,9 +10,14 @@ import {
 import { Link } from "react-router-dom";
 import Spinner from "../../spinner/Spinner";
 const ContactList = () => {
+  let [query, setQuery] = useState({
+    text: "",
+  });
+
   const [state, setState] = useState({
     loading: false,
     contacts: [],
+    filterContacts: [],
     errrorMessage: "",
   });
 
@@ -21,13 +26,48 @@ const ContactList = () => {
       setState({ ...state, loading: true });
       let response = await ContactServices.getAllContacts();
       console.log(response.data);
-      setState({ ...state, loading: false, contacts: response.data });
+      setState({
+        ...state,
+        loading: false,
+        contacts: response.data,
+        filterContacts: response.data,
+      });
     } catch (error) {
       setState({ ...state, loading: false, errrorMessage: error.message });
     }
   }, []);
-
-  let { loading, contacts, errrorMessage } = state;
+  // Delete Function
+  let clickDelete = async (deleteId) => {
+    try {
+      let response = await ContactServices.deleteContact(deleteId);
+      if (response) {
+        setState({ ...state, loading: true });
+        let response = await ContactServices.getAllContacts();
+        console.log(response.data);
+        setState({
+          ...state,
+          loading: false,
+          contacts: response.data,
+          filterContacts: response.data,
+        });
+      }
+    } catch (error) {
+      setState({ ...state, loading: false, errrorMessage: error.message });
+    }
+  };
+  let searchContact = (event) => {
+    setQuery({ ...query, text: event.target.value });
+    let theContacts = state.contacts.filter((contact) => {
+      return contact.name
+        .toLowerCase()
+        .includes(event.target.value.toLowerCase());
+    });
+    setState({
+      ...state,
+      filterContacts: theContacts,
+    });
+  };
+  let { loading, contacts, filterContacts, errrorMessage } = state;
 
   return (
     <>
@@ -60,6 +100,9 @@ const ContactList = () => {
                   <div className="col">
                     <div className="mb-2">
                       <input
+                        name="text"
+                        value={query.text}
+                        onChange={searchContact}
                         type="text"
                         className="form-control"
                         placeholder="search Name"
@@ -89,8 +132,8 @@ const ContactList = () => {
           <section className="contact-list">
             <div className="container">
               <div className="row ">
-                {contacts.length > 0 &&
-                  contacts.map((contact) => {
+                {filterContacts.length > 0 &&
+                  filterContacts.map((contact) => {
                     return (
                       <>
                         <div className="col-md-6" key={contact.id}>
@@ -146,13 +189,13 @@ const ContactList = () => {
                                   >
                                     <BsFillPencilFill />
                                   </Link>
-                                  <Link
-                                    to="/contactmanager/view"
+                                  <button
+                                    onClick={() => clickDelete(contact.id)}
                                     className="btn btn-danger"
                                     style={{ marginBottom: 4 }}
                                   >
                                     <BsFillTrashFill />
-                                  </Link>
+                                  </button>
                                 </div>
                               </div>
                             </div>

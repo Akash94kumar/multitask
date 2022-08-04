@@ -1,6 +1,4 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import About from "./components/About";
-import Contact from "./components/Contact";
 import Home from "./components/Home";
 import Navbar from "./layout/Navbars.jsx";
 import {
@@ -33,7 +31,6 @@ function App() {
             path={"/contactmanager/edit/:contactId"}
             element={<EditContact />}
           />
-          <Route path="/Contact" element={<Contact />} />
         </Routes>
       </Router>
     </>

@@ -55,7 +55,6 @@ const EditContact = () => {
         navigate("../contactmanager/list", { replace: true });
       }
     } catch (error) {
-      alert(error);
       setState({ ...state, errorMessage: error.messages });
       navigate(`../contactmanager/edit/${contactId}`, { replace: false });
     }

@@ -12,18 +12,17 @@ const Navbars = () => {
       <Navbar style={{ backgroundColor: "	#455d7a" }} variant="dark" expand="lg">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <BsArrowRightCircleFill className="text-warning" /> Multi{" "}
+            <BsArrowRightCircleFill className="text-warning" />
+            Multi
             <span className="text-warning">Task</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/About">
+              <Nav.Link as={Link} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to="/Contact">
-                Link
-              </Nav.Link>
+
               <NavDropdown title="Crud" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/contactmanager/list">
                   Contact Manager
