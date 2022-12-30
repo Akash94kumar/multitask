@@ -30,8 +30,8 @@ const Navbars = () => {
                 <NavDropdown.Item as={Link} to="/Contact">
                   Another action
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
+                <NavDropdown.Item as={Link} to="/HOC">
+                  HOC
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
