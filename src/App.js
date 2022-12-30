@@ -12,6 +12,7 @@ import ContactList from "./components/contactmanager/ContactList";
 import AddContact from "./components/contactmanager/AddContact";
 import ViewContact from "./components/contactmanager/ViewContact";
 import EditContact from "./components/contactmanager/EditContact";
+import SampleComponent from "./HOC/SampleComponent";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             path={"/contactmanager/edit/:contactId"}
             element={<EditContact />}
           />
+          <Route path="/hoc" element={<SampleComponent />} />
         </Routes>
       </Router>
     </>
