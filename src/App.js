@@ -13,6 +13,7 @@ import AddContact from "./components/contactmanager/AddContact";
 import ViewContact from "./components/contactmanager/ViewContact";
 import EditContact from "./components/contactmanager/EditContact";
 import SampleComponent from "./HOC/SampleComponent";
+import ColorChanges from "./USE_REFS/ColorChanges";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             element={<EditContact />}
           />
           <Route path="/hoc" element={<SampleComponent />} />
+          <Route path="/use_ref_color" element={<ColorChanges />} />
         </Routes>
       </Router>
     </>

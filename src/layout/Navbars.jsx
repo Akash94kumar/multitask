@@ -33,6 +33,9 @@ const Navbars = () => {
                 <NavDropdown.Item as={Link} to="/HOC">
                   HOC
                 </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/use_ref_color">
+                 USE_REFS_COLOR
+                </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">
                   Separated link
