@@ -14,6 +14,7 @@ import ViewContact from "./components/contactmanager/ViewContact";
 import EditContact from "./components/contactmanager/EditContact";
 import SampleComponent from "./HOC/SampleComponent";
 import ColorChanges from "./USE_REFS/ColorChanges";
+import USE_REF_FORM_HANDLING from "./USE_REFS/USE_REF_FORM_HANDLING";
 
 function App() {
   return (
@@ -35,6 +36,10 @@ function App() {
           />
           <Route path="/hoc" element={<SampleComponent />} />
           <Route path="/use_ref_color" element={<ColorChanges />} />
+          <Route
+            path="/USE_REF_FORM_HANDLING"
+            element={<USE_REF_FORM_HANDLING />}
+          />
         </Routes>
       </Router>
     </>
